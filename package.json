@@ -1,0 +1,17 @@
+{
+  "name": "pet-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "all-tests": "rm -rf allure-results allure-report; npx playwright test; allure generate ./allure-results -o ./allure-report --clean; allure open ./allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
+    "allure-playwright": "^3.9.0"
+  }
+}
