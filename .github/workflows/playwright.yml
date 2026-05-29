@@ -48,6 +48,11 @@ jobs:
         id: deployment
         if: ${{ !cancelled() && hashFiles('allure-report/**') != '' }}
         uses: actions/deploy-pages@v4
+      - name: Add Allure report link to summary
+        if: ${{ steps.deployment.outputs.page_url != '' }}
+        run: |
+          echo "### Allure report" >> "$GITHUB_STEP_SUMMARY"
+          echo "[Open Allure report](${{ steps.deployment.outputs.page_url }})" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() && hashFiles('allure-report/**') != '' }}
